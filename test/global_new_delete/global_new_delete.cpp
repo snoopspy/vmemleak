@@ -35,4 +35,5 @@ int main()
 {
 	delete new int;
 	delete[] new int[10];
+	return 0;
 }
