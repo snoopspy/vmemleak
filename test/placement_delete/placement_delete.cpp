@@ -30,11 +30,11 @@ public:
 
 int main()
 {
-	Obj* obj1 = new Obj; // (B)
-	delete obj1; // (A), (C)
+	Obj* obj1 = new Obj;                            // (B)
+	delete obj1;                                    // (A), (C)
 
-	Obj* obj2 = new Obj; // (B)
-	obj2->~Obj(); // (A)
+	Obj* obj2 = new Obj;                            // (B)
+	obj2->~Obj();                                   // (A)
 	Obj::operator delete(obj2, __FILE__, __LINE__); // (D)
 
 	return 0;
