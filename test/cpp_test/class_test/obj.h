@@ -3,8 +3,9 @@
 
 #include <stddef.h> // for size_t
 
-struct Obj
+class Obj
 {
+public:
 	char dummy1;
 
 public:
