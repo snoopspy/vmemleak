@@ -4,3 +4,6 @@ CONFIG  += console
 CONFIG  -= app_bundle
 TEMPLATE = app
 SOURCES += placement_delete.cpp
+
+OTHER_FILES += \
+    readme.md
