@@ -19,14 +19,16 @@ int main()
 	unsigned char* prev = NULL;
 	size_t size;
 	size_t i;
+	size_t diff;
 
-	prev = (unsigned char*)malloc(0);
+	prev = new unsigned char(0);
 	for (size = 0; size < 100; size++)
 	{
-		p = (unsigned char*)malloc(size);
+		p = new unsigned char(size);
 		for (i = 0; i < size; i++) p[i] = 'A';
+		diff = p - prev;
 		printf("%p %zu %zu\n", p, size, p - prev);
-		dump(p - 16, p - prev + 16);
+		dump(prev, diff * 2);
 		prev = p;
 	}
 	return 0;

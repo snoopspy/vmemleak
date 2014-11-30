@@ -17,7 +17,7 @@ void my_free(void* ptr, const char* file, const int line)
 //
 // use my_malloc and my_free directly
 //
-void test1()
+void direct_test()
 {
 	void* p1 = my_malloc(100, __FILE__, __LINE__);
 	my_free(p1, __FILE__, __LINE__);
@@ -28,8 +28,7 @@ void test1()
 //
 #define malloc(A) my_malloc((A), __FILE__, __LINE__)
 #define free(A)   my_free((A), __FILE__, __LINE__)
-
-void test2()
+void define_test()
 {
 	void* p1 = malloc(256);
 	free(p1);
@@ -40,8 +39,7 @@ void test2()
 //
 #undef malloc
 #undef free
-
-void test3()
+void rollback_test()
 {
 	void* p1 = malloc(256);
 	free(p1);
@@ -49,8 +47,8 @@ void test3()
 
 int main()
 {
-	test1();
-	test2();
-	test3();
+	direct_test();
+	define_test();
+	rollback_test();
 	return 0;
 }
