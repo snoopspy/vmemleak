@@ -4,7 +4,6 @@
 class Obj
 {
 public:
-	//int dummy;
 	virtual ~Obj() {}
 
 public:
