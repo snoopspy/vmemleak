@@ -6,4 +6,5 @@ SUBDIRS += \
 	class_size_test \
 	new_alignment_test \
 	delete_p_ps_test \
-    new_del_size_test
+    new_del_size_test \
+    new_size_test
