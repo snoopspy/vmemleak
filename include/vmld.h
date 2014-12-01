@@ -3,7 +3,7 @@
 
 // #include <stdlib.h> // gilgil temp 2014.12.01
 
-#include "vmld_impl.h"
+#include "vmld_func.h"
 
 #define malloc(SIZE)        vmld_malloc((SIZE), __FILE__, __LINE__)
 #define calloc(NMEMB, SIZE) vmld_calloc((NMEMB), (SIZE), __FILE__, __LINE__)

@@ -9,8 +9,11 @@ CONFIG   += staticlib
 DESTDIR   = ../lib
 
 SOURCES += \
-    ../include/vmld_func.c
+	../include/vmld_c.c \
+	../include/vmld_c.cpp
 
 HEADERS += \
 	../include/vmld.h \
-    ../include/vmld_func.h
+	../include/vmld_c.h \
+	../include/vmld_cpp.h
+
