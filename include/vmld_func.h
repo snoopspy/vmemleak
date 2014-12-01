@@ -1,5 +1,5 @@
-#ifndef __VMLD_IMPL_H__
-#define __VMLD_IMPL_H__
+#ifndef __VMLD_FUNC_H__
+#define __VMLD_FUNC_H__
 
 #include <stddef.h> // size_t
 
@@ -8,4 +8,4 @@ void *vmld_calloc(size_t nmemb, size_t size, const char* file, const int line);
 void *vmld_realloc(void *ptr, size_t size, const char* file, const int line);
 void vmld_free(void *ptr, const char* file, const int line);
 
-#endif // __VMLD_IMPL_H__
+#endif // __VMLD_FUNC_H__
