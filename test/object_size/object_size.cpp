@@ -2,12 +2,13 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
+void* operator new(size_t size)   { printf("new(size=%zu)\n", size);   return malloc(size); }
+void* operator new[](size_t size) { printf("new[](size=%zu)\n", size); return malloc(size); }
+
 class Obj
 {
 public:
 	char dummy[16];
-	void* operator new(size_t size)   { printf("Obj::new(size=%zu)\n", size);   return malloc(size); }
-	void* operator new[](size_t size) { printf("Obj::new[](size=%zu)\n", size); return malloc(size); }
 };
 
 class Obj_dtor
@@ -15,8 +16,6 @@ class Obj_dtor
 public:
 	~Obj_dtor() {}
 	char dummy[16];
-	void* operator new(size_t size)   { printf("Obj_dtor::new(size=%zu)\n", size);   return malloc(size); }
-	void* operator new[](size_t size) { printf("Obj_dtor::new[](size=%zu)\n", size); return malloc(size); }
 };
 
 class VObj_dtor
@@ -24,8 +23,6 @@ class VObj_dtor
 public:
 	virtual ~VObj_dtor() {}
 	char dummy[16];
-	void* operator new(size_t size)   { printf("VObj_dtor::new(size=%zu)\n", size);   return malloc(size); }
-	void* operator new[](size_t size) { printf("VObj_dtor::new[](size=%zu)\n", size); return malloc(size); }
 };
 
 
