@@ -3,6 +3,7 @@
 void first_test()
 {
 	delete new char;
+	delete[] new char[256];
 }
 
 #include "vmld_cancel.h"
@@ -15,20 +16,14 @@ void list_test()
 
 void second_test()
 {
+	delete new char;
 	delete[] new char[256];
-}
-
-void cancel_test()
-{
-	first_test();
-	list_test();
-	second_test();
 }
 
 int main()
 {
 	first_test();
 	list_test();
-	cancel_test();
+	second_test();
 	return 0;
 }
