@@ -1,4 +1,4 @@
-QT -=  gui
+QT -= core gui
 
 CONFIG += VMLD_LIB_BUILD
 include (vmld.pri)
