@@ -1,7 +1,7 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
-#include "vmld_func.h"
+#include "vmld_func_c.h"
 
 void *vmld_malloc(size_t size, const char* file, const int line)
 {

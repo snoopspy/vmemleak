@@ -1,5 +1,5 @@
-#ifndef __VMLD_C_H__
-#define __VMLD_C_H__
+#ifndef __VMLD_FUNC_C_H__
+#define __VMLD_FUNC_C_H__
 
 #include <stddef.h> // size_t
 
@@ -16,4 +16,4 @@ void  vmld_free   (void *ptr,                 const char* file, const int line);
 }
 #endif
 
-#endif // __VMLD_C_H__
+#endif // __VMLD_FUNC_C_H__
