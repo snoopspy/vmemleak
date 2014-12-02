@@ -23,3 +23,4 @@ INCLUDEPATH += $${VMLD_PATH}/include
 	LIBS                       += -L$${VMLD_PATH}/lib
 	LIBS                       += -l$${VMLD_LIB_NAME}
 }
+mingw:DEFINES += __USE_MINGW_ANSI_STDIO=1
