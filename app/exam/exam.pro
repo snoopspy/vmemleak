@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 SUBDIRS += \
-	c/c_test.pro \
-	cpp/cpp_test.pro
+	cancel_test \
+	c_test \
+	cpp_test

@@ -3,29 +3,25 @@
 
 #include "vmld_func_cpp.h"
 
-//#ifdef __cplusplus
-//extern "C" {
-//#endif
-
-void* operator new(size_t size, const char* file, const int line)
+void* operator new(size_t size, const char* file, const int line) throw(std::bad_alloc)
 {
 	printf("new(%zu, %s, %d)\n", size, file, line);
 	return malloc(size);
 }
 
-void* operator new[](size_t size, const char* file, const int line)
+void* operator new[](size_t size, const char* file, const int line) throw(std::bad_alloc)
 {
 	printf("new[](%zu, %s, %d)\n", size, file, line);
 	return malloc(size);
 }
 
-void operator delete(void* ptr) throw()
+void operator delete(void* ptr) /*throw()*/
 {
 	printf("delete(%p)\n", ptr);
 	free(ptr);
 }
 
-void operator delete[](void* ptr) throw()
+void operator delete[](void* ptr) /*throw()*/
 {
 	printf("delete[](%p)\n", ptr);
 	free(ptr);
@@ -35,7 +31,3 @@ void foo(void) // gilgil temp
 {
 	printf("foo\n");
 }
-
-//#ifdef __cplusplus
-//}
-//#endif

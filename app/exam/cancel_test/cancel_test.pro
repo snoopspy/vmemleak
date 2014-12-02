@@ -2,8 +2,8 @@ QT -= core gui
 
 include(../../../lib/vmld.pri)
 
-TARGET    = example1
+TARGET    = cancel_test
 CONFIG   += console
 CONFIG   -= app_bundle
 TEMPLATE  = app
-SOURCES  += c_test.c
+SOURCES  += cancel_test.cpp

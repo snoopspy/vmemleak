@@ -14,6 +14,7 @@ SOURCES += \
 
 HEADERS += \
 	../include/vmld.h \
+	../include/vmld_cancel.h \
 	../include/vmld_func_c.h \
 	../include/vmld_func_cpp.h
 
