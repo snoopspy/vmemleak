@@ -20,8 +20,7 @@ android-g++ {
 VMLD_PATH    =   $${PWD}/..
 INCLUDEPATH +=   $${VMLD_PATH}/include
 !CONFIG(VMLD_LIB_BUILD) {
+	win32-msvc*:PRE_TARGETDEPS +=  $${VMLD_PATH}/lib/$${VMLD_LIB_NAME}.lib
+	gcc:PRE_TARGETDEPS         +=  $${VMLD_PATH}/lib/lib$${VMLD_LIB_NAME}.a
 	LIBS                       += -L$${VMLD_PATH}/lib -l$${VMLD_LIB_NAME}
-	win32:PRE_TARGETDEPS       +=  $${VMLD_PATH}/lib/$${VMLD_LIB_NAME}.lib
-	linux-g++:PRE_TARGETDEPS   +=  $${VMLD_PATH}/lib/lib$${VMLD_LIB_NAME}.a
-	android-g++:PRE_TARGETDEPS +=  $${VMLD_PATH}/lib/lib$${VMLD_LIB_NAME}.so
 }
