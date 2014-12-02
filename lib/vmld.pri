@@ -1,15 +1,15 @@
 #-------------------------------------------------
 # library name
 #-------------------------------------------------
-VMLD_LIB_NAME=vmld
+VMLD_LIB_NAME = vmld
 CONFIG(debug, debug|release) {
-	VMLD_LIB_NAME=$${VMLD_LIB_NAME}_d
+	VMLD_LIB_NAME = $${VMLD_LIB_NAME}_d
 }
 contains(QT, gui) {
-	VMLD_LIB_NAME=$${VMLD_LIB_NAME}_gui
+	VMLD_LIB_NAME = $${VMLD_LIB_NAME}_gui
 }
 android-g++ {
-	VMLD_LIB_NAME=$${VMLD_LIB_NAME}_android
+	VMLD_LIB_NAME = $${VMLD_LIB_NAME}_android
 }
 
 #-------------------------------------------------
