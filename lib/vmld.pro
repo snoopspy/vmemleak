@@ -6,7 +6,7 @@ include (vmld.pri)
 TARGET    = $${VMLD_LIB_NAME}
 TEMPLATE  = lib
 CONFIG   += staticlib
-DESTDIR   = ../lib
+DESTDIR   = $${PWD}
 
 SOURCES += \
 	../include/vmld_func_c.c \
