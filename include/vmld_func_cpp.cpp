@@ -3,13 +3,13 @@
 
 #include "vmld_func_cpp.h"
 
-void* operator new(size_t size, const char* file, const int line) throw(std::bad_alloc)
+void* operator new(size_t size, const char* file, const int line) throw(VMLD_NEW_THROW)
 {
 	printf("new(%zu, %s, %d)\n", size, file, line);
 	return malloc(size);
 }
 
-void* operator new[](size_t size, const char* file, const int line) throw(std::bad_alloc)
+void* operator new[](size_t size, const char* file, const int line) throw(VMLD_NEW_THROW)
 {
 	printf("new[](%zu, %s, %d)\n", size, file, line);
 	return malloc(size);

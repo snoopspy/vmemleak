@@ -1,5 +1,5 @@
-#ifndef __VMLD_CANCEL_H__
-#define __VMLD_CANCEL_H__
+// #ifndef __VMLD_CANCEL_H__ // gilgil temp 2014.12.02
+// #define __VMLD_CANCEL_H__ // gilgil temp 2014.12.02
 
 // ----------------------------------------------------------------------------
 // macro for c
@@ -19,4 +19,4 @@
 
 #endif // __cplusplus
 
-#endif // __VMLD_H__
+// #endif // __VMLD_H__ // gilgil temp 2014.12.02
