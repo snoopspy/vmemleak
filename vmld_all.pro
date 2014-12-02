@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
+CONFIG += ordered
 SUBDIRS += \
-	app \
-	lib/vmld.pro
-
+	lib/vmld.pro \
+	app
