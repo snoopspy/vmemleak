@@ -1,8 +1,7 @@
 #ifndef __VMLD_FUNC_CPP_H__
 #define __VMLD_FUNC_CPP_H__
 
-
-#ifdef __GNUC___
+#ifdef __GNUC__
   #include <new>      // bad_alloc
   #include <stddef.h> // size_t
   #define VMLD_NEW_THROW std::bad_alloc
