@@ -26,8 +26,3 @@ void operator delete[](void* ptr) throw()
 	printf("delete[](%p)\n", ptr);
 	free(ptr);
 }
-
-void foo(void) // gilgil temp
-{
-	printf("foo\n");
-}

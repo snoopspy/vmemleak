@@ -14,6 +14,5 @@ void* operator new     (size_t size, const char* file, const int line) throw(VML
 void* operator new[]   (size_t size, const char* file, const int line) throw(VMLD_NEW_THROW);
 void  operator delete  (void* ptr) throw();
 void  operator delete[](void* ptr) throw();
-void  foo(void); // gilgil temp
 
 #endif // __VMLD_FUNC_CPP_H__

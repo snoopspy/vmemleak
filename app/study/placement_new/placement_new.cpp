@@ -32,7 +32,6 @@ public:
 int main()
 {
 	new Obj;                     // (A)
-	// new() Obj;                   // (A) // gilgil temp 2014.12.02
 	new(__FILE__) Obj;           // (B)
 	new(__FILE__, __LINE__) Obj; // (C)
 
