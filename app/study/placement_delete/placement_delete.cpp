@@ -11,7 +11,7 @@ public:
 
 	void* operator new(size_t size) // (B)
 	{
-		printf("Obj::new(size=%zu)\n", size);
+		printf("Obj::new(size=%d)\n", (int)size);
 		return malloc(size);
 	}
 

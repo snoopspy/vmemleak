@@ -17,7 +17,7 @@ class Obj_ps
 public:
 	void operator delete(void* p, size_t size) // (B)
 	{
-		printf("Obj_ps::delete[](p=%p size=%zu)\n", p, size);
+		printf("Obj_ps::delete[](p=%p size=%d)\n", p, (int)size);
 		free(p);
 	}
 };
@@ -33,7 +33,7 @@ public:
 
 	void operator delete(void* p, size_t size) // (B)
 	{
-		printf("Obj_both::delete[](p=%p size=%zu)\n", p, size);
+		printf("Obj_both::delete[](p=%p size=%d)\n", p, (int)size);
 		free(p);
 	}
 };

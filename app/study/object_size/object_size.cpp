@@ -4,13 +4,13 @@
 
 void* operator new(size_t size)
 {
-	printf("new(size=%zu)\n", size);
+	printf("new(size=%d)\n", (int)size);
 	return malloc(size);
 }
 
 void* operator new[](size_t size)
 {
-	printf("new[](size=%zu)\n", size);
+	printf("new[](size=%d)\n", (int)size);
 	return malloc(size);
 }
 
