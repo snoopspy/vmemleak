@@ -24,6 +24,5 @@ int main()
 	malloc_free_test();
 	calloc_free_test();
 	realloc_free_test();
-
 	return 0;
 }

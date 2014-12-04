@@ -1,5 +1,5 @@
 #include <stddef.h> // size_t
-#include <stdio.h> // printf
+#include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
 #include "vmld_mgr.h"
@@ -8,10 +8,10 @@
 
 typedef struct
 {
-	void*  ptr;
+	void* ptr;
 	size_t size;
-	char*  file;
-	int    line;
+	char* file;
+	int line;
 } vmld_mgr_item_t;
 
 typedef struct
@@ -20,10 +20,6 @@ typedef struct
 	bool del_check;
 	int max_cnt;
 } vmld_mgr_t;
-
-vmld_mgr_item_t* _find(void* ptr);
-vmld_mgr_item_t* _add(void* ptr, size_t size, char* file, int line);
-vmld_mgr_item_t* _del(void* ptr);
 
 static vmld_mgr_t _vmld_mgr;
 
@@ -79,65 +75,58 @@ void vmld_mgr_stop(bool auto_free)
 	_vmld_mgr.del_check = false;
 }
 
-vmld_mgr_item_t* _vmld_mgr_find(void* ptr)
+bool vmld_mgr_add(void* ptr, size_t size, const char* file, const int line)
 {
-	for (int i = 0; i < _vmld_mgr.max_cnt; i++)
+	int i;
+	vmld_mgr_item_t* item;
+
+	for (i = 0; i < VMLD_ITEM_CNT; i++)
 	{
-		vmld_mgr_item_t* item = &_vmld_mgr.items[i];
+		item = &_vmld_mgr.items[i];
+		if (item->ptr == NULL)
+		{
+			item->ptr = ptr;
+			item->size = size;
+			item->file = (char*)file;
+			item->line = (int)line;
+			if (i + 1 > _vmld_mgr.max_cnt)
+				_vmld_mgr.max_cnt = i + 1;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool vmld_mgr_del(void* ptr)
+{
+	int i, j;
+	vmld_mgr_item_t* item;
+	vmld_mgr_item_t* temp;
+
+	for (i = 0; i < _vmld_mgr.max_cnt; i++)
+	{
+		item = &_vmld_mgr.items[i];
 		if (item->ptr == ptr)
 		{
-			return info;
-		}
-	}
-	return NULL;
-}
+			item->ptr = NULL;
+			item->size = 0;
+			item->file = NULL;
+			item->line = 0;
 
-vmld_mgr_item_t* _vmld_mgr_add(void* ptr, size_t size, char* file, int line)
-{
-	for (int i = 0; i < m_cnt; i++)
-	{
-		VMemoryLeakInfo* info = &m_info[i];
-		if (info->p == NULL)
-		{
-			info->p    = p;
-			info->size = size;
-			info->file = file;
-			info->line = line;
-			if (i + 1 > m_cur_max_cnt) m_cur_max_cnt = i + 1;
-			return info;
-		}
-	}
-	return NULL;
-}
-
-VMemoryLeakInfo* VMemoryLeak::del(void* p)
-{
-	for (int i = 0; i < m_cur_max_cnt; i++)
-	{
-		VMemoryLeakInfo* info = &m_info[i];
-		if (info->p == p)
-		{
-			info->p    = NULL;
-			info->size = 0;
-			info->file = NULL;
-			info->line = 0;
-
-			bool m_cur_max_cnt_move = true;
-			VMemoryLeakInfo* temp = info + 1;
-			for (int j = i + 1; j < m_cur_max_cnt; j++)
+			bool change_max_cnt = true;
+			temp = item + 1;
+			for (j = i + 1; j < _vmld_mgr.max_cnt; j++)
 			{
-				if (temp->p != NULL)
+				if (temp->ptr != NULL)
 				{
-					m_cur_max_cnt_move = false;
+					change_max_cnt = false;
 					break;
 				}
 				temp++;
 			}
-
-			if (m_cur_max_cnt_move) m_cur_max_cnt = i + 1;
-
-			return info;
+			if (change_max_cnt) _vmld_mgr.max_cnt = i + 1;
+			return true;
 		}
 	}
-	return NULL;
+	return false;
 }
