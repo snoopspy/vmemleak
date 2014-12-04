@@ -1,7 +1,5 @@
-#include <errno.h>  // errno
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
-#include <string.h> // strerror
 
 #include "vmld_func_c.h"
 #include "vmld_mgr.h"

@@ -3,26 +3,28 @@
 
 #include "vmld_func_cpp.h"
 
+#define debug printf
+
 void* operator new(size_t size, const char* file, const int line) throw(VMLD_NEW_THROW)
 {
-	printf("new(%d, %s, %d)\n", (int)size, file, line);
+	debug("new(%d, %s, %d)\n", (int)size, file, line);
 	return malloc(size);
 }
 
 void* operator new[](size_t size, const char* file, const int line) throw(VMLD_NEW_THROW)
 {
-	printf("new[](%d, %s, %d)\n", (int)size, file, line);
+	debug("new[](%d, %s, %d)\n", (int)size, file, line);
 	return malloc(size);
 }
 
 void operator delete(void* ptr) throw()
 {
-	printf("delete(%p)\n", ptr);
+	debug("delete(%p)\n", ptr);
 	free(ptr);
 }
 
 void operator delete[](void* ptr) throw()
 {
-	printf("delete[](%p)\n", ptr);
+	debug("delete[](%p)\n", ptr);
 	free(ptr);
 }
