@@ -112,7 +112,7 @@ void vmld_mgr_start(bool del_check)
 	_vmld_mgr.max_cnt = 0;
 }
 
-void vmld_mgr_stop(bool auto_free)
+void vmld_mgr_stop(void)
 {
 	int i;
 	bool write_start;
@@ -130,14 +130,10 @@ void vmld_mgr_stop(bool auto_free)
 			}
 			fprintf(stderr, "memory leak %p(%d bytes) %s:%d\n",
 				item->ptr, (int)item->size, item->file, item->line);
-			if (auto_free)
-			{
-				free(item->ptr);
-				item->ptr = NULL;
-				item->size = 0;
-				item->file = NULL;
-				item->line = 0;
-			}
+			item->ptr = NULL;
+			item->size = 0;
+			item->file = NULL;
+			item->line = 0;
 		}
 	}
 	if (write_start)
