@@ -5,6 +5,7 @@
 
 ```cpp
 [test.cpp]
+
 #include <vmdl.h>
 
 void foo()
@@ -22,6 +23,7 @@ void foo()
 
 ```cpp
 [main.cpp]
+
 #include <vmld_hdr.h>
 
 int main()
@@ -34,6 +36,8 @@ int main()
   * If compiler error occurs when other header file is included, include "vmld_cancel.h" before the header file.
 
 ```cpp
+[cancel.cpp]
+
 #include <vmld.h>
 ...
 ... memory leak detection
