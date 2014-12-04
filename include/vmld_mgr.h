@@ -3,11 +3,18 @@
 
 #include <stdbool.h> // bool
 
-void vmld_mgr_start(bool del_check);
-void vmld_mgr_stop(bool auto_free);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-bool vmld_mgr_add(void* ptr, size_t size, const char* file, const int line);
-bool vmld_mgr_del(void* ptr);
+void  vmld_mgr_start(bool del_check);
+void  vmld_mgr_stop(bool auto_free);
+void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line);
+bool  vmld_mgr_del(void* ptr);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __VMLD_MGR_H__
 
