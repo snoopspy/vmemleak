@@ -2,6 +2,12 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
+#ifdef _MSC_VER
+  typedef int bool;
+  bool true = 1;
+  bool false = 0;
+#endif // __MS_VER
+
 #include "vmld_mgr.h"
 
 #define VMLD_ITEM_CNT 65536
@@ -50,16 +56,17 @@ void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line)
 	return NULL;
 }
 
-bool vmld_mgr_del(void* ptr)
+void vmld_mgr_del(void* ptr)
 {
 	int i, j;
 	vmld_mgr_item_t* item;
 	vmld_mgr_item_t* temp;
+	bool change_max_cnt;
 
 	if (ptr == NULL)
 	{
 		fprintf(stderr, "ptr is null\n");
-		return false;
+		return;
 	}
 	for (i = 0; i < _vmld_mgr.max_cnt; i++)
 	{
@@ -71,7 +78,7 @@ bool vmld_mgr_del(void* ptr)
 			item->file = NULL;
 			item->line = 0;
 
-			bool change_max_cnt = true;
+			change_max_cnt = true;
 			temp = item + 1;
 			for (j = i + 1; j < _vmld_mgr.max_cnt; j++)
 			{
@@ -83,10 +90,9 @@ bool vmld_mgr_del(void* ptr)
 				temp++;
 			}
 			if (change_max_cnt) _vmld_mgr.max_cnt = i + 1;
-			return true;
+			return;
 		}
 	}
-	return false;
 }
 
 void vmld_mgr_start(void)

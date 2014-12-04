@@ -17,8 +17,10 @@ void calloc_test()
 
 void realloc_test()
 {
+	void *p;
+
 	vmld_mgr_start();
-	void *p = malloc(4);
+	p = malloc(4);
 	realloc(p, 4);
 	vmld_mgr_stop();
 
