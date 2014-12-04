@@ -3,26 +3,26 @@
 
 void malloc_test()
 {
-	vmld_mgr_start(false);
+	vmld_mgr_start();
 	malloc(256);
 	vmld_mgr_stop();
 }
 
 void calloc_test()
 {
-	vmld_mgr_start(false);
+	vmld_mgr_start();
 	calloc(4, 256);
 	vmld_mgr_stop();
 }
 
 void realloc_test()
 {
-	vmld_mgr_start(false);
+	vmld_mgr_start();
 	void *p = malloc(4);
 	realloc(p, 4);
 	vmld_mgr_stop();
 
-	vmld_mgr_start(false);
+	vmld_mgr_start();
 	p = malloc(4);
 	realloc(p, 400000);
 	vmld_mgr_stop();

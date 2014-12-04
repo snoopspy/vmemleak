@@ -17,7 +17,6 @@ typedef struct
 typedef struct
 {
 	vmld_mgr_item_t items[VMLD_ITEM_CNT];
-	bool del_check;
 	int max_cnt;
 } vmld_mgr_t;
 
@@ -87,15 +86,10 @@ bool vmld_mgr_del(void* ptr)
 			return true;
 		}
 	}
-	if (_vmld_mgr.del_check)
-	{
-		fprintf(stderr, "failed in vmld_mgr_del(%p)\n", ptr);
-		return false;
-	}
-	return true;
+	return false;
 }
 
-void vmld_mgr_start(bool del_check)
+void vmld_mgr_start(void)
 {
 	int i;
 	vmld_mgr_item_t* item;
@@ -108,7 +102,6 @@ void vmld_mgr_start(bool del_check)
 		item->file = NULL;
 		item->line = 0;
 	}
-	_vmld_mgr.del_check = del_check;
 	_vmld_mgr.max_cnt = 0;
 }
 
@@ -140,5 +133,4 @@ void vmld_mgr_stop(void)
 	{
 		fprintf(stderr, "******************************************************************************\n");
 	}
-	_vmld_mgr.del_check = false;
 }
