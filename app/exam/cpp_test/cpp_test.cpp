@@ -1,20 +1,20 @@
 #include "vmld.h"
 
-void new_delete_test()
+void new_test()
 {
-	char* p = new char;
+	int* p = new int;
 	delete p;
 }
 
-void new_delete_arr_test()
+void new_arr_test()
 {
-	char* p = new char[256];
+	int* p = new int[256];
 	delete[] p;
 }
 
 int main()
 {
-	new_delete_test();
-	new_delete_arr_test();
+	new_test();
+	new_arr_test();
 	return 0;
 }

@@ -1,28 +1,32 @@
 #include "vmld.h"
 
-void malloc_free_test()
+void malloc_test()
 {
-	void* p = malloc(256);
+	void* p = malloc(4);
 	free(p);
 }
 
-void calloc_free_test()
+void calloc_test()
 {
-	void* p = calloc(4, 256);
+	void* p = calloc(256, 4);
 	free(p);
 }
 
-void realloc_free_test()
+void realloc_test()
 {
-	void* p = malloc(256);
-	p = realloc(p, 256);
+	void* p = malloc(4);
+	p = realloc(p, 4);
+	free(p);
+
+	p = malloc(4);
+	p = realloc(p, 400000);
 	free(p);
 }
 
 int main()
 {
-	malloc_free_test();
-	calloc_free_test();
-	realloc_free_test();
+	malloc_test();
+	calloc_test();
+	realloc_test();
 	return 0;
 }

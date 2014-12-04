@@ -1,0 +1,23 @@
+#include "vmld.h"
+#include "vmld_mgr.h"
+
+void new_test()
+{
+	vmld_mgr_start(false);
+	new int;
+	vmld_mgr_stop();
+}
+
+void new_arr_test()
+{
+	vmld_mgr_start(false);
+	new int[256];
+	vmld_mgr_stop();
+}
+
+int main()
+{
+	new_test();
+	new_arr_test();
+	return 0;
+}

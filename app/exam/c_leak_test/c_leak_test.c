@@ -17,16 +17,14 @@ void calloc_test()
 
 void realloc_test()
 {
-	void* p;
-
 	vmld_mgr_start(false);
-	p = malloc(256);
-	realloc(p, 256);
+	void *p = malloc(4);
+	realloc(p, 4);
 	vmld_mgr_stop();
 
 	vmld_mgr_start(false);
-	p = malloc(256);
-	realloc(p, 256000);
+	p = malloc(4);
+	realloc(p, 400000);
 	vmld_mgr_stop();
 }
 
