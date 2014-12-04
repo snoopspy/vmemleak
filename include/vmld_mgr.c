@@ -1,6 +1,7 @@
-#include <stddef.h> // size_t
-#include <stdio.h>  // printf
-#include <stdlib.h> // malloc
+#include <stdbool.h> // bool
+#include <stddef.h>  // size_t
+#include <stdio.h>   // printf
+#include <stdlib.h>  // malloc
 
 #ifdef _MSC_VER
   typedef int bool;
