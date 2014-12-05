@@ -36,7 +36,6 @@ typedef struct
 
 static vmld_mgr_t _vmld_mgr;
 
-
 void vmld_mgr_start(void)
 {
 	int i;
