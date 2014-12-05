@@ -1,4 +1,14 @@
 #-------------------------------------------------
+# debug and release
+#-------------------------------------------------
+CONFIG(debug, debug|release) {
+	DEFINES += _DEBUG
+}
+CONFIG(release, debug|release) {
+	DEFINES += _RELEASE
+}
+
+#-------------------------------------------------
 # library name
 #-------------------------------------------------
 VMLD_LIB_NAME = vmld
