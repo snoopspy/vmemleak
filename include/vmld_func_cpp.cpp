@@ -1,6 +1,8 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
+#ifdef _DEBUG
+
 #include "vmld_func_cpp.h"
 #include "vmld_mgr.h"
 
@@ -35,3 +37,5 @@ void operator delete[](void* ptr) throw()
 	vmld_mgr_del(ptr);
 	free(ptr);
 }
+
+#endif // _DEBUG

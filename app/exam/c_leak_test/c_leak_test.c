@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "vmld.h"
 #include "vmld_mgr.h"
 

@@ -3,6 +3,13 @@
 #include <stdio.h>   // printf
 #include <stdlib.h>  // malloc
 
+#ifndef _DEBUG
+void vmld_mgr_start(void) {}
+void  vmld_mgr_stop(void) {}
+#endif // _DEBUG
+
+#ifdef _DEBUG
+
 #ifdef _MSC_VER
   typedef int bool;
   bool true = 1;
@@ -28,6 +35,53 @@ typedef struct
 } vmld_mgr_t;
 
 static vmld_mgr_t _vmld_mgr;
+
+
+void vmld_mgr_start(void)
+{
+	int i;
+	vmld_mgr_item_t* item;
+
+	for (i = 0; i < VMLD_ITEM_CNT; i++)
+	{
+		item = &_vmld_mgr.items[i];
+		item->ptr = NULL;
+		item->size = 0;
+		item->file = NULL;
+		item->line = 0;
+	}
+	_vmld_mgr.max_cnt = 0;
+}
+
+void vmld_mgr_stop(void)
+{
+	int i;
+	bool write_start;
+
+	write_start = false;
+	for (i = 0; i < _vmld_mgr.max_cnt; i++)
+	{
+		vmld_mgr_item_t* item = &_vmld_mgr.items[i];
+		if (item->ptr != NULL)
+		{
+			if (!write_start)
+			{
+				write_start = true;
+				fprintf(stderr, "******************************************************************************\n");
+			}
+			fprintf(stderr, "memory leak %p(%d bytes) %s:%d\n",
+				item->ptr, (int)item->size, item->file, item->line);
+			item->ptr = NULL;
+			item->size = 0;
+			item->file = NULL;
+			item->line = 0;
+		}
+	}
+	if (write_start)
+	{
+		fprintf(stderr, "******************************************************************************\n");
+	}
+}
 
 void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line)
 {
@@ -96,48 +150,4 @@ void vmld_mgr_del(void* ptr)
 	}
 }
 
-void vmld_mgr_start(void)
-{
-	int i;
-	vmld_mgr_item_t* item;
-
-	for (i = 0; i < VMLD_ITEM_CNT; i++)
-	{
-		item = &_vmld_mgr.items[i];
-		item->ptr = NULL;
-		item->size = 0;
-		item->file = NULL;
-		item->line = 0;
-	}
-	_vmld_mgr.max_cnt = 0;
-}
-
-void vmld_mgr_stop(void)
-{
-	int i;
-	bool write_start;
-
-	write_start = false;
-	for (i = 0; i < _vmld_mgr.max_cnt; i++)
-	{
-		vmld_mgr_item_t* item = &_vmld_mgr.items[i];
-		if (item->ptr != NULL)
-		{
-			if (!write_start)
-			{
-				write_start = true;
-				fprintf(stderr, "******************************************************************************\n");
-			}
-			fprintf(stderr, "memory leak %p(%d bytes) %s:%d\n",
-				item->ptr, (int)item->size, item->file, item->line);
-			item->ptr = NULL;
-			item->size = 0;
-			item->file = NULL;
-			item->line = 0;
-		}
-	}
-	if (write_start)
-	{
-		fprintf(stderr, "******************************************************************************\n");
-	}
-}
+#endif // _DEBUG

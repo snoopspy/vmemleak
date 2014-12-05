@@ -1,6 +1,8 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
+#ifdef _DEBUG
+
 #include "vmld_func_c.h"
 #include "vmld_mgr.h"
 
@@ -46,3 +48,5 @@ void vmld_free(void *ptr, const char* file, const int line)
 	vmld_mgr_del(ptr);
 	free(ptr);
 }
+
+#endif // _DEBUG
