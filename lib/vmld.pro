@@ -9,13 +9,13 @@ CONFIG   += staticlib
 DESTDIR   = $${PWD}
 
 SOURCES += \
-	../include/vmld_func_c.c \
-	../include/vmld_func_cpp.cpp \
+	../include/vmld_impl_c.c \
+	../include/vmld_impl_cpp.cpp \
 	../include/vmld_mgr.c
 
 HEADERS += \
 	../include/vmld.h \
 	../include/vmld_cancel.h \
-	../include/vmld_func_c.h \
-	../include/vmld_func_cpp.h \
+	../include/vmld_impl_c.h \
+	../include/vmld_impl_cpp.h \
 	../include/vmld_mgr.h

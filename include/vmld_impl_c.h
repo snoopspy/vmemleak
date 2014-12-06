@@ -1,5 +1,5 @@
-#ifndef __VMLD_FUNC_C_H__
-#define __VMLD_FUNC_C_H__
+#ifndef __VMLD_IMPL_C_H__
+#define __VMLD_IMPL_C_H__
 
 #ifdef _DEBUG
 
@@ -20,4 +20,4 @@ void  vmld_free   (void *ptr,                 const char* file, const int line);
 
 #endif // _DEBUG
 
-#endif // __VMLD_FUNC_C_H__
+#endif // __VMLD_IMPL_C_H__

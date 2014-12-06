@@ -1,10 +1,9 @@
+#ifdef _DEBUG
+
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
-#ifdef _DEBUG
-
-#include "vmld_func_c.h"
-#include "vmld_mgr.h"
+#include "vmld_impl_c.h"
 
 #define _debug printf
 
