@@ -1,14 +1,3 @@
-#ifdef _MSC_VER
-	#ifndef cpluscplus
-		typedef int bool;
-		bool true = 1;
-		bool false = 0;
-	#endif // cpluscplus
-#endif // __MS_VER
-#ifdef __GNUC__
-	#include <stdbool.h> // bool
-#endif // __GNUC__
-
 #include <stddef.h>  // size_t
 #include <stdio.h>   // printf
 #include <stdlib.h>  // malloc
@@ -59,17 +48,17 @@ void vmld_mgr_start(void)
 void vmld_mgr_stop(void)
 {
 	int i;
-	bool write_start;
+	int is_written;
 
-	write_start = false;
+	is_written = 0; // false
 	for (i = 0; i < _vmld_mgr.max_cnt; i++)
 	{
 		vmld_mgr_item_t* item = &_vmld_mgr.items[i];
 		if (item->ptr != NULL)
 		{
-			if (!write_start)
+			if (!is_written)
 			{
-				write_start = true;
+				is_written = 1; // true
 				fprintf(stderr, "******************************************************************************\n");
 			}
 			fprintf(stderr, "memory leak %p(%d bytes) %s:%d\n",
@@ -80,7 +69,7 @@ void vmld_mgr_stop(void)
 			item->line = 0;
 		}
 	}
-	if (write_start)
+	if (is_written)
 	{
 		fprintf(stderr, "******************************************************************************\n");
 	}
@@ -119,7 +108,7 @@ void vmld_mgr_del(void* ptr)
 	int i, j;
 	vmld_mgr_item_t* item;
 	vmld_mgr_item_t* temp;
-	bool change_max_cnt;
+	int is_max_cnt_changed;
 
 	if (ptr == NULL)
 	{
@@ -136,18 +125,18 @@ void vmld_mgr_del(void* ptr)
 			item->file = NULL;
 			item->line = 0;
 
-			change_max_cnt = true;
+			is_max_cnt_changed = 1; // true
 			temp = item + 1;
 			for (j = i + 1; j < _vmld_mgr.max_cnt; j++)
 			{
 				if (temp->ptr != NULL)
 				{
-					change_max_cnt = false;
+					is_max_cnt_changed = 0; // false
 					break;
 				}
 				temp++;
 			}
-			if (change_max_cnt) _vmld_mgr.max_cnt = i + 1;
+			if (is_max_cnt_changed) _vmld_mgr.max_cnt = i + 1;
 			return;
 		}
 	}
