@@ -1,15 +1,14 @@
-#include <stddef.h>  // size_t
-#include <stdio.h>   // printf
-#include <stdlib.h>  // malloc
+#include <stddef.h> // size_t
+#include <stdio.h>  // printf
+#include <stdlib.h> // malloc
+#include "vmld_mgr.h"
 
 #ifndef _DEBUG
 void vmld_mgr_start(void) {}
-void  vmld_mgr_stop(void) {}
+void vmld_mgr_stop(void) {}
 #endif // _DEBUG
 
 #ifdef _DEBUG
-
-#include "vmld_mgr.h"
 
 #define VMLD_ITEM_CNT 65536
 

@@ -1,5 +1,4 @@
 #include <stdlib.h>
-
 #include "vmld.h"
 
 void first_test()
