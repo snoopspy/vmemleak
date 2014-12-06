@@ -34,7 +34,6 @@ public:
 	char dummy[16];
 };
 
-
 int main()
 {
 	delete new Obj;             // 16
