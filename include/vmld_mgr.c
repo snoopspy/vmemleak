@@ -8,6 +8,7 @@
 #ifdef __GNUC__
 	#include <stdbool.h> // bool
 #endif // __GNUC__
+
 #include <stddef.h>  // size_t
 #include <stdio.h>   // printf
 #include <stdlib.h>  // malloc
