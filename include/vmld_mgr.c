@@ -1,4 +1,13 @@
-#include <stdbool.h> // bool
+#ifdef _MSC_VER
+	#ifndef cpluscplus
+		typedef int bool;
+		bool true = 1;
+		bool false = 0;
+	#endif // cpluscplus
+#endif // __MS_VER
+#ifdef __GNUC__
+	#include <stdbool.h> // bool
+#endif // __GNUC__
 #include <stddef.h>  // size_t
 #include <stdio.h>   // printf
 #include <stdlib.h>  // malloc
@@ -9,12 +18,6 @@ void  vmld_mgr_stop(void) {}
 #endif // _DEBUG
 
 #ifdef _DEBUG
-
-#ifdef _MSC_VER
-  typedef int bool;
-  bool true = 1;
-  bool false = 0;
-#endif // __MS_VER
 
 #include "vmld_mgr.h"
 
