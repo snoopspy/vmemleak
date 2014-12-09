@@ -3,21 +3,13 @@
 
 #ifdef _DEBUG
 
-#ifdef __GNUC__
-	#include <new>      // bad_alloc
-	#include <stddef.h> // size_t
-	#define VMLD_NEW_THROW throw(std::bad_alloc)
-	#define VMLD_DEL_THROW throw()
-#endif // __GNUC__
-#ifdef _MSC_VER
-	#define VMLD_NEW_THROW throw()
-	#define VMLD_DEL_THROW throw()
-#endif // __MS_VER
+#include <new>      // bad_alloc
+#include <stddef.h> // size_t
 
-void* operator new     (size_t size, const char* file, const int line) VMLD_NEW_THROW;
-void* operator new[]   (size_t size, const char* file, const int line) VMLD_NEW_THROW;
-void  operator delete  (void* ptr) VMLD_DEL_THROW;
-void  operator delete[](void* ptr) VMLD_DEL_THROW;
+void* operator new     (size_t size, const char* file, const int line) throw(std::bad_alloc);
+void* operator new[]   (size_t size, const char* file, const int line) throw(std::bad_alloc);
+void  operator delete  (void* ptr) throw();
+void  operator delete[](void* ptr) throw();
 
 #endif // _DEBUG
 

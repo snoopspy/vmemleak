@@ -10,7 +10,7 @@
 extern "C" void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line);
 extern "C" void  vmld_mgr_del(void* ptr);
 
-void* operator new(size_t size, const char* file, const int line) VMLD_NEW_THROW
+void* operator new(size_t size, const char* file, const int line) throw(std::bad_alloc)
 {
 	_debug("new(%d, %s, %d)\n", (int)size, file, line);
 	void* res = malloc(size);
@@ -18,7 +18,7 @@ void* operator new(size_t size, const char* file, const int line) VMLD_NEW_THROW
 	return res;
 }
 
-void* operator new[](size_t size, const char* file, const int line) VMLD_NEW_THROW
+void* operator new[](size_t size, const char* file, const int line) throw(std::bad_alloc)
 {
 	_debug("new[](%d, %s, %d)\n", (int)size, file, line);
 	void* res = malloc(size);
@@ -26,14 +26,14 @@ void* operator new[](size_t size, const char* file, const int line) VMLD_NEW_THR
 	return res;
 }
 
-void operator delete(void* ptr) VMLD_DEL_THROW
+void operator delete(void* ptr) throw()
 {
 	_debug("delete(%p)\n", ptr);
 	vmld_mgr_del(ptr);
 	free(ptr);
 }
 
-void operator delete[](void* ptr) VMLD_DEL_THROW
+void operator delete[](void* ptr) throw()
 {
 	_debug("delete[](%p)\n", ptr);
 	vmld_mgr_del(ptr);
