@@ -3,7 +3,7 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
-#include "vmld_impl_c.h"
+#include "vmld_func_c.h"
 
 #define _debug printf
 
