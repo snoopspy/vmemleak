@@ -3,12 +3,10 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
-#include "vmld_func_cpp.h"
+#include "vmldfunc_cpp.h"
+#include "vmldmgr.h"
 
 #define _debug printf
-
-extern "C" void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line);
-extern "C" void  vmld_mgr_del(void* ptr);
 
 void* operator new(size_t size, const char* file, const int line) throw(std::bad_alloc)
 {

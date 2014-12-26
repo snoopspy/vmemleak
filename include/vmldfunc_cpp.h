@@ -6,6 +6,9 @@
 #include <new>      // bad_alloc
 #include <stddef.h> // size_t
 
+// ----------------------------------------------------------------------------
+// function for cpp
+// ----------------------------------------------------------------------------
 void* operator new     (size_t size, const char* file, const int line) throw(std::bad_alloc);
 void* operator new[]   (size_t size, const char* file, const int line) throw(std::bad_alloc);
 void  operator delete  (void* ptr) throw();

@@ -9,6 +9,9 @@
 extern "C" {
 #endif // __cplusplus
 
+// ----------------------------------------------------------------------------
+// function for c
+// ----------------------------------------------------------------------------
 void* vmld_malloc (              size_t size, const char* file, const int line);
 void* vmld_calloc (size_t nmemb, size_t size, const char* file, const int line);
 void* vmld_realloc(void *ptr,    size_t size, const char* file, const int line);

@@ -6,7 +6,7 @@ void first_test()
 	delete[] new int[256];
 }
 
-#include "vmld_cancel.h"
+#include "vmldcancel.h"
 void cancel_test()
 {
 	delete new int;

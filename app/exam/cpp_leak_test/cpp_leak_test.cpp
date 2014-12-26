@@ -1,5 +1,5 @@
 #include "vmld.h"
-#include "vmld_mgr.h"
+#include "vmldmgr.h"
 
 void new_test()
 {

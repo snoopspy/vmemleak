@@ -18,7 +18,7 @@ void first_test()
 	free(p);
 }
 
-#include "vmld_cancel.h"
+#include "vmldcancel.h"
 void cancel_test()
 {
 	void *p = malloc(4);

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "vmld.h"
-#include "vmld_mgr.h"
+#include "vmldmgr.h"
 
 void malloc_test()
 {
