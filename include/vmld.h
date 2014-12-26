@@ -4,6 +4,7 @@
 // macro for c
 // ----------------------------------------------------------------------------
 #include "vmldfunc_c.h"
+
 #undef  malloc
 #define malloc(SIZE)        vmld_malloc ((SIZE),          __FILE__, __LINE__)
 #undef  calloc
@@ -19,6 +20,7 @@
 #ifdef __cplusplus
 
 #include "vmldfunc_cpp.h"
+
 #undef  vmld_new
 #define vmld_new new(__FILE__, __LINE__)
 #undef  new
