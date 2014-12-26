@@ -8,6 +8,9 @@
 
 #define _debug printf
 
+// ----------------------------------------------------------------------------
+// function for c
+// ----------------------------------------------------------------------------
 void* vmld_malloc(size_t size, const char* file, const int line)
 {
 	void* res;
@@ -49,12 +52,9 @@ void vmld_free(void *ptr, const char* file, const int line)
 	free(ptr);
 }
 
-
-#include <stdio.h>  // printf
-#include <stdlib.h> // malloc
-
-#define _debug printf
-
+// ----------------------------------------------------------------------------
+// function for cpp
+// ----------------------------------------------------------------------------
 void* operator new(size_t size, const char* file, const int line) throw(std::bad_alloc)
 {
     _debug("new(%d, %s, %d)\n", (int)size, file, line);

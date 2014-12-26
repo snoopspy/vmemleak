@@ -8,6 +8,7 @@ void vmld_mgr_stop(void) {}
 #include <stddef.h> // size_t
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
+
 #include "vmldmgr.h"
 
 #define VMLD_ITEM_CNT 65536
