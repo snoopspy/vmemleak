@@ -1,5 +1,5 @@
-#ifndef __VMLD_FUNC_C_H__
-#define __VMLD_FUNC_C_H__
+#ifndef __VMLD_FUNC_H__
+#define __VMLD_FUNC_H__
 
 #ifdef _DEBUG
 
@@ -21,6 +21,20 @@ void  vmld_free   (void *ptr,                 const char* file, const int line);
 }
 #endif // __cplusplus
 
+#ifdef __cplusplus
+
+#include <new> // bad_alloc
+
+// ----------------------------------------------------------------------------
+// function for cpp
+// ----------------------------------------------------------------------------
+void* operator new     (size_t size, const char* file, const int line) throw(std::bad_alloc);
+void* operator new[]   (size_t size, const char* file, const int line) throw(std::bad_alloc);
+void  operator delete  (void* ptr) throw();
+void  operator delete[](void* ptr) throw();
+
+#endif // __cplusplus
+
 #endif // _DEBUG
 
-#endif // __VMLD_FUNC_C_H__
+#endif // __VMLD_FUNC_H__

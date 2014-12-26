@@ -3,7 +3,7 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
-#include "vmldfunc_c.h"
+#include "vmldfunc.h"
 #include "vmldmgr.h"
 
 #define _debug printf
@@ -47,6 +47,42 @@ void vmld_free(void *ptr, const char* file, const int line)
 	_debug("vmld_free(%p, %s, %d)\n", ptr, file, line);
 	vmld_mgr_del(ptr);
 	free(ptr);
+}
+
+
+#include <stdio.h>  // printf
+#include <stdlib.h> // malloc
+
+#define _debug printf
+
+void* operator new(size_t size, const char* file, const int line) throw(std::bad_alloc)
+{
+    _debug("new(%d, %s, %d)\n", (int)size, file, line);
+    void* res = malloc(size);
+    res = vmld_mgr_add(res, size, file, line);
+    return res;
+}
+
+void* operator new[](size_t size, const char* file, const int line) throw(std::bad_alloc)
+{
+    _debug("new[](%d, %s, %d)\n", (int)size, file, line);
+    void* res = malloc(size);
+    res = vmld_mgr_add(res, size, file, line);
+    return res;
+}
+
+void operator delete(void* ptr) throw()
+{
+    _debug("delete(%p)\n", ptr);
+    vmld_mgr_del(ptr);
+    free(ptr);
+}
+
+void operator delete[](void* ptr) throw()
+{
+    _debug("delete[](%p)\n", ptr);
+    vmld_mgr_del(ptr);
+    free(ptr);
 }
 
 #endif // _DEBUG

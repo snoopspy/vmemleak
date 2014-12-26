@@ -3,7 +3,7 @@
 // ----------------------------------------------------------------------------
 // macro for c
 // ----------------------------------------------------------------------------
-#include "vmldfunc_c.h"
+#include "vmldfunc.h"
 
 #undef  malloc
 #define malloc(SIZE)        vmld_malloc ((SIZE),          __FILE__, __LINE__)
@@ -18,8 +18,6 @@
 // macro for cpp
 // ----------------------------------------------------------------------------
 #ifdef __cplusplus
-
-#include "vmldfunc_cpp.h"
 
 #undef  vmld_new
 #define vmld_new new(__FILE__, __LINE__)
