@@ -1,5 +1,5 @@
-#ifndef __VMLD_IMPL_CPP_H__
-#define __VMLD_IMPL_CPP_H__
+#ifndef __VMLD_FUNC_CPP_H__
+#define __VMLD_FUNC_CPP_H__
 
 #ifdef _DEBUG
 
@@ -13,4 +13,4 @@ void  operator delete[](void* ptr) throw();
 
 #endif // _DEBUG
 
-#endif // __VMLD_IMPL_CPP_H__
+#endif // __VMLD_FUNC_CPP_H__
