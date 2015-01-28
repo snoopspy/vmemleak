@@ -6,8 +6,7 @@ void vmld_mgr_stop(void) {}
 #ifdef _DEBUG
 
 #include <map>
-#include <stdio.h>  // printf
-#include <stdlib.h> // malloc
+#include <stdio.h>  // fprintf
 #include "vmldmgr.h"
 
 typedef struct
@@ -34,8 +33,7 @@ void vmld_mgr_stop(void)
   {
     void* ptr = it->first;
     vmld_mgr_item_t& item = it->second;
-    fprintf(stderr, "memory leak %p(%d bytes) %s:%d\n",
-      ptr, (int)item.size, item.file, item.line);
+    fprintf(stderr, "memory leak %p(%d bytes) %s:%d\n", ptr, (int)item.size, item.file, item.line);
   }
   fprintf(stderr, "******************************************************************************\n");
 }
