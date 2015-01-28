@@ -5,7 +5,6 @@ void vmld_mgr_stop(void) {}
 
 #ifdef _DEBUG
 
-#include <stddef.h> // size_t
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 

@@ -1,6 +1,8 @@
 #ifndef __VMLD_MGR_H__
 #define __VMLD_MGR_H__
 
+#include <stddef.h> // size_t
+
 #ifdef __cplusplus
 extern "C" {
 #endif
