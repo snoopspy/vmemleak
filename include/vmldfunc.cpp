@@ -6,7 +6,11 @@
 #include "vmldfunc.h"
 #include "vmldmgr.h"
 
-#define _debug printf
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-value"
+#endif // __GNUC__
+
+#define _debug
 
 // ----------------------------------------------------------------------------
 // function for c
