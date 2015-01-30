@@ -1,6 +1,6 @@
 #ifndef _DEBUG
-void vmld_mgr_start(void) {}
-void vmld_mgr_stop(void) {}
+extern "C" void vmld_mgr_start(void) {}
+extern "C" void vmld_mgr_stop(void) {}
 #endif // _DEBUG
 
 #ifdef _DEBUG
@@ -20,12 +20,12 @@ typedef std::map<void*, vmld_mgr_item_t> vmld_mgr_t;
 
 static vmld_mgr_t _vmld_mgr;
 
-void vmld_mgr_start(void)
+extern "C" void vmld_mgr_start(void)
 {
   _vmld_mgr.clear();
 }
 
-void vmld_mgr_stop(void)
+extern "C" void vmld_mgr_stop(void)
 {
   if (_vmld_mgr.size() <= 0) return;
   fprintf(stderr, "******************************************************************************\n");
@@ -38,7 +38,7 @@ void vmld_mgr_stop(void)
   fprintf(stderr, "******************************************************************************\n");
 }
 
-void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line)
+extern "C" void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line)
 {
   vmld_mgr_t::iterator it = _vmld_mgr.find(ptr);
   if (it != _vmld_mgr.end())
@@ -54,7 +54,7 @@ void* vmld_mgr_add(void* ptr, size_t size, const char* file, const int line)
   return ptr;
 }
 
-void vmld_mgr_del(void* ptr)
+extern "C" void vmld_mgr_del(void* ptr)
 {
   if (ptr == NULL)
   {
