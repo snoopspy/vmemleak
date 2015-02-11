@@ -1,3 +1,13 @@
+// ----------------------------------------------------------------------------
+//
+// VDream Component Suite version 9.1
+//
+// http://www.gilgil.net
+//
+// Copyright (c) Gilbert Lee All rights reserved
+//
+// ----------------------------------------------------------------------------
+
 #ifndef __V_MEM_LEAK_MGR_H__
 #define __V_MEM_LEAK_MGR_H__
 
