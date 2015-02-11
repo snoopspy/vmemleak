@@ -3,8 +3,8 @@
 #include <stdio.h>  // printf
 #include <stdlib.h> // malloc
 
-#include "vmldfunc.h"
-#include "vmldmgr.h"
+#include "vmemleakfunc.h"
+#include "vmemleakmgr.h"
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wunused-value"
@@ -15,44 +15,44 @@
 // ----------------------------------------------------------------------------
 // function for c
 // ----------------------------------------------------------------------------
-void* vmld_malloc(size_t size, const char* file, const int line)
+void* vmemleak_malloc(size_t size, const char* file, const int line)
 {
 	void* res;
 
-	_debug("vmld_malloc(%d, %s, %d)\n", (int)size, file, line);
+  _debug("vmemleak_malloc(%d, %s, %d)\n", (int)size, file, line);
 	res = malloc(size);
-	res = vmld_mgr_add(res, size, file, line);
+  res = vmemleak_mgr_add(res, size, file, line);
 	return res;
 }
 
-void* vmld_calloc(size_t nmemb, size_t size, const char* file, const int line)
+void* vmemleak_calloc(size_t nmemb, size_t size, const char* file, const int line)
 {
 	void* res;
 
-	_debug("vmld_calloc(%d, %d, %s, %d)\n", (int)nmemb, (int)size, file, line);
+  _debug("vmemleak_calloc(%d, %d, %s, %d)\n", (int)nmemb, (int)size, file, line);
 	res = calloc(nmemb, size);
-	res = vmld_mgr_add(res, size, file, line);
+  res = vmemleak_mgr_add(res, size, file, line);
 	return res;
 }
 
-void* vmld_realloc(void *ptr, size_t size, const char* file, const int line)
+void* vmemleak_realloc(void *ptr, size_t size, const char* file, const int line)
 {
 	void* res;
 
-	_debug("vmld_realloc(%p, %d, %s, %d)\n", ptr, (int)size, file, line);
+  _debug("vmemleak_realloc(%p, %d, %s, %d)\n", ptr, (int)size, file, line);
 	res = realloc(ptr, size);
 	if (res != ptr)
 	{
-		vmld_mgr_del(ptr);
-		res = vmld_mgr_add(res, size, file, line);
+    vmemleak_mgr_del(ptr);
+    res = vmemleak_mgr_add(res, size, file, line);
 	}
 	return res;
 }
 
-void vmld_free(void *ptr, const char* file, const int line)
+void vmemleak_free(void *ptr, const char* file, const int line)
 {
-	_debug("vmld_free(%p, %s, %d)\n", ptr, file, line);
-	vmld_mgr_del(ptr);
+  _debug("vmemleak_free(%p, %s, %d)\n", ptr, file, line);
+  vmemleak_mgr_del(ptr);
 	free(ptr);
 }
 
@@ -63,7 +63,7 @@ void* operator new(size_t size, const char* file, const int line) throw(std::bad
 {
     _debug("new(%d, %s, %d)\n", (int)size, file, line);
     void* res = malloc(size);
-    res = vmld_mgr_add(res, size, file, line);
+    res = vmemleak_mgr_add(res, size, file, line);
     return res;
 }
 
@@ -71,21 +71,21 @@ void* operator new[](size_t size, const char* file, const int line) throw(std::b
 {
     _debug("new[](%d, %s, %d)\n", (int)size, file, line);
     void* res = malloc(size);
-    res = vmld_mgr_add(res, size, file, line);
+    res = vmemleak_mgr_add(res, size, file, line);
     return res;
 }
 
 void operator delete(void* ptr) throw()
 {
     _debug("delete(%p)\n", ptr);
-    vmld_mgr_del(ptr);
+    vmemleak_mgr_del(ptr);
     free(ptr);
 }
 
 void operator delete[](void* ptr) throw()
 {
     _debug("delete[](%p)\n", ptr);
-    vmld_mgr_del(ptr);
+    vmemleak_mgr_del(ptr);
     free(ptr);
 }
 

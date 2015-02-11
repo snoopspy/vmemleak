@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------
 #ifdef __cplusplus
 
-#undef vmld_new
+#undef vmemleak_new
 #undef new
 
 #endif // __cplusplus

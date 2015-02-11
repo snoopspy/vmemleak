@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "vmld.h"
+#include <VMemLeak>
 
 void first_test()
 {
@@ -18,7 +18,7 @@ void first_test()
 	free(p);
 }
 
-#include "vmldcancel.h"
+#include <VMemLeakCancel>
 void cancel_test()
 {
 	void *p = malloc(4);
@@ -36,7 +36,7 @@ void cancel_test()
 	free(p);
 }
 
-#include "vmld.h"
+#include <VMemLeak>
 void second_test()
 {
 	void *p = malloc(4);

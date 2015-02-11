@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "vmld.h"
+#include <VMemLeak>
 
 void malloc_test()
 {

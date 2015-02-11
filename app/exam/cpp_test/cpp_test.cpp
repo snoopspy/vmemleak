@@ -1,4 +1,4 @@
-#include "vmld.h"
+#include <VMemLeak>
 
 void new_test()
 {

@@ -1,4 +1,4 @@
-#include "vmld.h"
+#include <VMemLeak>
 
 void first_test()
 {
@@ -6,14 +6,14 @@ void first_test()
 	delete[] new int[256];
 }
 
-#include "vmldcancel.h"
+#include <VMemLeakCancel>
 void cancel_test()
 {
 	delete new int;
 	delete[] new int[256];
 }
 
-#include "vmld.h"
+#include <VMemLeak>
 void second_test()
 {
 	delete new int;

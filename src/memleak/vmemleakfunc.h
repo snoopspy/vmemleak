@@ -1,5 +1,5 @@
-#ifndef __VMLD_FUNC_H__
-#define __VMLD_FUNC_H__
+#ifndef __V_MEM_LEAK_FUNC_H__
+#define __V_MEM_LEAK_FUNC_H__
 
 #ifdef _DEBUG
 
@@ -12,10 +12,10 @@ extern "C" {
 // ----------------------------------------------------------------------------
 // function for c
 // ----------------------------------------------------------------------------
-void* vmld_malloc (              size_t size, const char* file, const int line);
-void* vmld_calloc (size_t nmemb, size_t size, const char* file, const int line);
-void* vmld_realloc(void *ptr,    size_t size, const char* file, const int line);
-void  vmld_free   (void *ptr,                 const char* file, const int line);
+void* vmemleak_malloc (              size_t size, const char* file, const int line);
+void* vmemleak_calloc (size_t nmemb, size_t size, const char* file, const int line);
+void* vmemleak_realloc(void *ptr,    size_t size, const char* file, const int line);
+void  vmemleak_free   (void *ptr,                 const char* file, const int line);
 
 #ifdef __cplusplus
 }
@@ -37,4 +37,4 @@ void  operator delete[](void* ptr) throw();
 
 #endif // _DEBUG
 
-#endif // __VMLD_FUNC_H__
+#endif // __V_MEM_LEAK_FUNC_H__
