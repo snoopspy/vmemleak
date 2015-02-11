@@ -2,7 +2,7 @@
 
 ## How to use
 
-  * Call vmemleak_mgr_start() to start memory leak detection and call vmld_mgr_stop() to stop memory leak detection.
+  * Call vmemleak_mgr_start() to start memory leak detection and call vmemleak_mgr_stop() to stop memory leak detection.
 
 ```cpp
 [main.cpp]
