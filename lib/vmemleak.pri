@@ -12,14 +12,14 @@ CONFIG(release, debug|release) {
 # library name
 #-------------------------------------------------
 VMEMLEAK_LIB_NAME = vmemleak
-CONFIG(debug, debug|release) {
-  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_d
+android-g++ {
+  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_android
 }
 contains(QT, gui) {
   VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_gui
 }
-android-g++ {
-  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_android
+CONFIG(debug, debug|release) {
+  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_d
 }
 
 #-------------------------------------------------
