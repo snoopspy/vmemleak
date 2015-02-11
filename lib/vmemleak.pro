@@ -16,7 +16,7 @@ HEADERS += \
 	../src/memleak/vmemleak.h \
 	../src/memleak/vmemleakfunc.h \
 	../src/memleak/vmemleakmgr.h \
-    ../src/memleak/vmemleakcancel.h
+	../src/memleak/vmemleakcancel.h
 
 DISTFILES += \
 	../src/VMemLeak \
