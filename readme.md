@@ -59,7 +59,7 @@ void foo()
 
 ## Example
 
-  * Run the [source code](https://github.com/snoopspy/vmemleak/blob/master/app/exam/cpp_leak_test/cpp_leak_test.cpp) and you will get the following result.
+  * Run the [source code](app/exam/cpp_leak_test/cpp_leak_test.cpp) and you will get the following result.
 
 ```
     # ./cpp_leak_test 
