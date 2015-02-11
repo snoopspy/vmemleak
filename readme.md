@@ -2,27 +2,27 @@
 
 ## How to use
 
-  * Call vmld_mgr_start() to start memory leak detection and call vmld_mgr_stop() to stop memory leak detection.
+  * Call vmemleak_mgr_start() to start memory leak detection and call vmld_mgr_stop() to stop memory leak detection.
 
 ```cpp
 [main.cpp]
 
-#include <vmldmgr.h>
+#include <VMemLeakMgr>
 
 int main()
 {
-  vmld_mgr_start();
+  vmemleak_mgr_start();
   ...
-  vmld_mgr_stop();
+  vmemleak_mgr_stop();
 }
 ```
 
-  * Include vmld.h header file where malloc, calloc, realloc, free, new and delete are used.
+  * Include VMemLeak header file where malloc, calloc, realloc, free, new and delete are used.
 
 ```cpp
 [test.cpp]
 
-#include <vmdl.h>
+#include <VMemLeak>
 
 void foo()
 {
@@ -35,23 +35,23 @@ void foo()
 }
 ```
 
-  * If compiler error occurs where other header file is included, include vmldcancel.h before the header file.
+  * If compiler error occurs where other header file is included, include VMemLeakCancel before the header file.
 
 ```cpp
 [cancel.cpp]
 
-#include <vmld.h>
+#include <VMemLeak>
 ...
 ... memory leak detection
 ...
 
-#include <vmldcancel.h>
+#include <VMemLeakCancel>
 #include <list>
 ...
 ... no memory leak detection
 ...
 
-#include <vmld.h>
+#include <VMemLeak>
 ...
 ... memory leak detection
 ...
