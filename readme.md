@@ -57,3 +57,17 @@ void foo()
 ...
 ```
 
+## Example
+
+  * Run the [source code](https://github.com/snoopspy/vmemleak/blob/master/app/exam/cpp_leak_test/cpp_leak_test.cpp) and you will get the following result.
+
+```
+    # ./cpp_leak_test 
+    ******************************************************************************
+    memory leak 0x1b3a010(4 bytes) cpp_leak_test.cpp:7
+    ******************************************************************************
+    ******************************************************************************
+    memory leak 0x1b3a030(1024 bytes) cpp_leak_test.cpp:14
+    ******************************************************************************
+    #
+```
