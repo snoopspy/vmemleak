@@ -12,8 +12,8 @@ extern "C" void vmemleak_mgr_stop(void) {}
 typedef struct
 {
   size_t size;
-	char* file;
-	int line;
+  char* file;
+  int line;
 } vmemleak_mgr_item_t;
 
 typedef std::map<void*, vmemleak_mgr_item_t> vmemleak_mgr_t;

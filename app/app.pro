@@ -1,4 +1,4 @@
 TEMPLATE = subdirs
 SUBDIRS += \
-	exam \
-	study
+  exam \
+  study

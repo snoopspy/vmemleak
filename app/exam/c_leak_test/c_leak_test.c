@@ -9,36 +9,36 @@
 void malloc_test()
 {
   vmemleak_mgr_start();
-	malloc(256);
+  malloc(256);
   vmemleak_mgr_stop();
 }
 
 void calloc_test()
 {
   vmemleak_mgr_start();
-	calloc(4, 256);
+  calloc(4, 256);
   vmemleak_mgr_stop();
 }
 
 void realloc_test()
 {
-	void *p;
+  void *p;
 
   vmemleak_mgr_start();
-	p = malloc(4);
-	realloc(p, 4);
+  p = malloc(4);
+  realloc(p, 4);
   vmemleak_mgr_stop();
 
   vmemleak_mgr_start();
-	p = malloc(4);
-	realloc(p, 400000);
+  p = malloc(4);
+  realloc(p, 400000);
   vmemleak_mgr_stop();
 }
 
 int main()
 {
-	malloc_test();
-	calloc_test();
-	realloc_test();
-	return 0;
+  malloc_test();
+  calloc_test();
+  realloc_test();
+  return 0;
 }

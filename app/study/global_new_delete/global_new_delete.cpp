@@ -5,35 +5,35 @@
 
 void* operator new(size_t size)
 {
-	printf("new(size=%d)\n", (int)size);
-	// ::operator new(size); // stack overflow
-	return malloc(size);
+  printf("new(size=%d)\n", (int)size);
+  // ::operator new(size); // stack overflow
+  return malloc(size);
 }
 
 void* operator new[](size_t size)
 {
-	printf("new[](size=%d)\n", (int)size);
-	// ::operator new[](size); // stack overflow
-	return malloc(size);
+  printf("new[](size=%d)\n", (int)size);
+  // ::operator new[](size); // stack overflow
+  return malloc(size);
 }
 
 void operator delete(void* p)
 {
-	printf("delete(p=%p)\n", p);
-	// ::operator delete(p); // stack overflow
-	free(p);
+  printf("delete(p=%p)\n", p);
+  // ::operator delete(p); // stack overflow
+  free(p);
 }
 
 void operator delete[](void* p)
 {
-	printf("delete[](p=%p)\n", p);
-	// ::operator delete[](p); // stack overflow
-	free(p);
+  printf("delete[](p=%p)\n", p);
+  // ::operator delete[](p); // stack overflow
+  free(p);
 }
 
 int main()
 {
-	delete new int;
-	delete[] new int[10];
-	return 0;
+  delete new int;
+  delete[] new int[10];
+  return 0;
 }
