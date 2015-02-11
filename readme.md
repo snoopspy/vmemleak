@@ -1,4 +1,4 @@
-# VDream Memory Leak Detector version 9.1
+# VDream Memory Leak detector version 9.1
 
 ## How to use
 
