@@ -80,5 +80,5 @@ void foo()
 ```
 
 ## Supported Platforms
-  * Windows / mingw 32bit
-  * Linus / g++ version 4.9.1
+  * Linux / g++ 4.8.2
+  * Windows / mingw 4.9.1
