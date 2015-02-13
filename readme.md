@@ -1,15 +1,16 @@
 # VDream Memory Leak detector version 9.1
 
 ## Project setting
-  * For Qt User
-    * Open "vmemleak.pro", build and library(*.a or *.lib) file will be created.
-    * Include "vmemleak.pri" in your project file(*.pro).
+  * For Qt user
+    * Open **vmemleak.pro**, compile build and a library(*.a or *.lib).
+    * Include **vmemleak.pri** in your project file(*.pro).
   * For none Qt user
-    * Add all "h" anc "cpp" files in src folder in your project.
+    * Add all files in src folder in your project.
 
 ## How to use
 
-  * Include **VMemLeakMgr**(or vmemleakmgr.h), call **vmemleak_mgr_start()** to start memory leak detection and call **vmemleak_mgr_stop()** to stop memory leak detection.
+  * Include **VMemLeakMgr**.
+  * Call **vmemleak_mgr_start()** to start memory leak detection and call **vmemleak_mgr_stop()** to stop memory leak detection.
 
 ```cpp
 [main.cpp]
@@ -24,7 +25,7 @@ int main()
 }
 ```
 
-  * Include **VMemLeak**(or vmemleak.h) file where malloc, calloc, realloc, free, new and delete are used.
+  * Include **VMemLeak** before malloc, calloc, realloc, free, new and delete are used.
 
 ```cpp
 [test.cpp]
@@ -42,7 +43,7 @@ void foo()
 }
 ```
 
-  * If compiler error occurs where other header file is included, include **VMemLeakCancel**(or vmemleakcancel.h) before the header file.
+  * If compiler error occurs where other header file is included, include **VMemLeakCancel** before the header file.
 
 ```cpp
 [cancel.cpp]
