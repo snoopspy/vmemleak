@@ -25,7 +25,7 @@ CONFIG(debug, debug|release) {
 #-------------------------------------------------
 # vmemleak
 #-------------------------------------------------
-VMEMLEAK_PATH = $${PWD}/..
+VMEMLEAK_PATH = $${PWD}
 INCLUDEPATH += $${VMEMLEAK_PATH}/src
 !CONFIG(VMEMLEAK_LIB_BUILD) {
   PRE_TARGETDEPS +=  $${VMEMLEAK_PATH}/lib/lib$${VMEMLEAK_LIB_NAME}.a

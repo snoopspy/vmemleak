@@ -1,6 +1,6 @@
 QT -= core gui
 
-include(../../../lib/vmemleak.pri)
+include(../../../vmemleak.pri)
 
 TARGET    = c_leak_test
 CONFIG   += console

@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
 CONFIG += ordered
 SUBDIRS += \
-  lib/vmemleak.pro \
+  libvmemleak.pro \
   app
