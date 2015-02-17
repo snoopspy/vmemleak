@@ -2,7 +2,7 @@
 
 ## Project setting
   * For Qt user
-    * Open **vmemleak.pro**, compile build and a library(*.a or *.lib).
+    * Open **libvmemleak.pro**, compile build and a library(*.a).
     * Include **vmemleak.pri** in your project file(*.pro).
   * For none Qt user
     * Add all files in src folder in your project.
