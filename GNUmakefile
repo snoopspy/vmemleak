@@ -1,9 +1,8 @@
 all:
-	make update
 	make build
 
 update:
-	@#git pull
+	git pull
 
 build:
 	make debug
