@@ -28,4 +28,4 @@ app_:
 
 clean:
 	make clean -f Makefile
-	rm -rf Makefile
+	find -name Makefile -type f -delete
