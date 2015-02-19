@@ -21,7 +21,7 @@ release:
 
 app_:
 	cd app && \
-	qmake app.pro CONFIG+=debug && \
+	qmake vmemleak_app.pro CONFIG+=debug && \
 	make -f Makefile && \
 	make clean -f Makefile && \
 	cd ..
