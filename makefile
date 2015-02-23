@@ -28,6 +28,5 @@ app_:
 
 clean:
 	make clean -f qmakefile
-	find -name qmakefile -type f -delete	
-	find -name Makefile -type f -delete
+	find -name "Makefile*" -type f -delete
 
