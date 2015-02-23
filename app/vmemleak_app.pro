@@ -1,4 +1,4 @@
 TEMPLATE = subdirs
 SUBDIRS += \
-  exam \
-  study
+  exam/vmemleak_exam.pro \
+  study/vmemleak_study.pro
