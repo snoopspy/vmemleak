@@ -1,3 +1,4 @@
+TEMP_MAKEFILE=_makefile
 all:
 	make build
 
@@ -10,23 +11,23 @@ build:
 	make app_
 
 debug:
-	qmake libvmemleak.pro CONFIG+=debug -o _makefile
-	make -f _makefile
-	make clean -f _makefile
+	qmake libvmemleak.pro CONFIG+=debug -o $(TEMP_MAKEFILE)
+	make -f $(TEMP_MAKEFILE)
+	make clean -f $(TEMP_MAKEFILE)
 
 release:
-	qmake libvmemleak.pro CONFIG+=release -o _makefile
-	make -f _makefile
-	make clean -f _makefile
+	qmake libvmemleak.pro CONFIG+=release -o $(TEMP_MAKEFILE)
+	make -f $(TEMP_MAKEFILE)
+	make clean -f $(TEMP_MAKEFILE)
 
 app_:
 	cd app && \
-	qmake vmemleak_app.pro CONFIG+=debug -o _makefile && \
-	make -f _makefile && \
-	make clean -f _makefile && \
+	qmake vmemleak_app.pro CONFIG+=debug -o $(TEMP_MAKEFILE) && \
+	make -f $(TEMP_MAKEFILE) && \
+	make clean -f $(TEMP_MAKEFILE) && \
 	cd ..
 
 clean:
-	make clean -f _makefile
+	make clean -f $(TEMP_MAKEFILE)
 	find -name "Makefile*" -type f -delete
 
