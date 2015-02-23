@@ -1,26 +1,18 @@
 #-------------------------------------------------
 # debug and release
 #-------------------------------------------------
-CONFIG(debug, debug|release) {
-  DEFINES += _DEBUG
-}
-CONFIG(release, debug|release) {
-  DEFINES += _RELEASE
-}
+CONFIG(debug,   debug|release) DEFINES += _DEBUG
+CONFIG(release, debug|release) DEFINES += _RELEASE
+message($${DEFINES})
 
 #-------------------------------------------------
 # library name
 #-------------------------------------------------
 VMEMLEAK_LIB_NAME = vmemleak
-android-g++ {
-  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_android
-}
-contains(QT, gui) {
-  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_gui
-}
-CONFIG(debug, debug|release) {
-  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_d
-}
+android-g++:                 VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_android
+contains(QT, gui)            VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_gui
+CONFIG(debug, debug|release) VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_d
+message($${VMEMLEAK_LIB_NAME})
 
 #-------------------------------------------------
 # vmemleak
