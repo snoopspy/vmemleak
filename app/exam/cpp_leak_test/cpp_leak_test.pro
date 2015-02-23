@@ -6,4 +6,6 @@ TARGET    = cpp_leak_test
 CONFIG   += console
 CONFIG   -= app_bundle
 TEMPLATE  = app
+DESTDIR   = $${PWD}/../../../bin
+
 SOURCES  += cpp_leak_test.cpp
