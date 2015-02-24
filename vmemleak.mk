@@ -2,6 +2,7 @@
 # vmemleak
 #
 VMEMLEAK_PATH := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+CPPFLAGS += -D_DEBUG
 CPPFLAGS += -I$(VMEMLEAK_PATH)/src -D_DEBUG
 
 SOURCES += \
