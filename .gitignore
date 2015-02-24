@@ -4,4 +4,6 @@ lib/
 _makefile
 Makefile*
 *.a
+*.o
 *.user
+
