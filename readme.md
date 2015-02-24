@@ -1,13 +1,14 @@
-# VDream Memory Leak detector version 9.1
+VDream Memory Leak Detector Library
+===================================
 
-## Project setting
+# Project setting
   * For Qt user
     * Open **libvmemleak.pro**, compile and build library files(*.a).
     * Include **vmemleak.pri** in your project file(*.pro).
   * For none Qt user
     * Add all files in src folder in your project.
 
-## How to use
+# How to use
 
   * Include **VMemLeakMgr**.
   * Call **vmemleak_mgr_start()** to start memory leak detection and call **vmemleak_mgr_stop()** to stop memory leak detection.
@@ -65,7 +66,7 @@ void foo()
 ...
 ```
 
-## Example
+# Example
 
   * Run the [source code](app/exam/cpp_leak_test/cpp_leak_test.cpp) and you will get the following result.
 
@@ -80,6 +81,6 @@ void foo()
     #
 ```
 
-## Supported Platforms
+# Supported Platforms
   * Linux / g++ 4.8.2
   * Windows / mingw 4.9.1
