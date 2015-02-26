@@ -1,7 +1,7 @@
 VDream Memory Leak Detector Library
 ===================================
 
-# Setup
+# Install
   * For Qt user
     * Open **libvmemleak.pro**, compile and build library files(*.a).
     * Include **vmemleak.pri** in your project file(*.pro).
@@ -84,3 +84,4 @@ void foo()
 # Supported Platforms
   * Linux / g++ 4.8.2
   * Windows / mingw 4.9.1
+

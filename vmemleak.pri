@@ -1,23 +1,22 @@
-#-------------------------------------------------
+#------------------------------------------------------------------------------
 # debug and release
-#-------------------------------------------------
-CONFIG(debug,   debug|release) DEFINES += _DEBUG
-CONFIG(release, debug|release) DEFINES += _RELEASE
-message($${DEFINES})
+#------------------------------------------------------------------------------
+CONFIG(debug, debug|release)   DEFINES += _DEBUG
+CONFIG(release, debug|release) DEFINES += _RELEASE NDEBUG
 
-#-------------------------------------------------
+#------------------------------------------------------------------------------
+# library name
+#------------------------------------------------------------------------------
+VMEMLEAK_NAME = vmemleak
+android-g++:                 VMEMLEAK_NAME = $${VMEMLEAK_NAME}_android
+CONFIG(debug, debug|release) VMEMLEAK_NAME = $${VMEMLEAK_NAME}_d
+
+#------------------------------------------------------------------------------
 # vmemleak
-#-------------------------------------------------
-VMEMLEAK_PATH = $${PWD}
+#------------------------------------------------------------------------------
+VMEMLEAK_PATH  = $${PWD}
 INCLUDEPATH += $${VMEMLEAK_PATH}/src
-mingw:DEFINES += __USE_MINGW_ANSI_STDIO=1 # gilgil temp 2015.02.24
-
-SOURCES += \
-  $${VMEMLEAK_PATH}/src/memleak/vmemleakfunc.cpp \
-  $${VMEMLEAK_PATH}/src/memleak/vmemleakmgr.cpp
-
-HEADERS += \
-  $${VMEMLEAK_PATH}/src/memleak/vmemleak.h \
-  $${VMEMLEAK_PATH}/src/memleak/vmemleakcancel.h \
-  $${VMEMLEAK_PATH}/src/memleak/vmemleakfunc.h \
-  $${VMEMLEAK_PATH}/src/memleak/vmemleakmgr.h
+!CONFIG(VMEMLEAK_BUILD) {
+  PRE_TARGETDEPS +=  $${VMEMLEAK_PATH}/lib/lib$${VMEMLEAK_NAME}.a
+  LIBS           += -L$${VMEMLEAK_PATH}/lib -l$${VMEMLEAK_NAME}
+}
