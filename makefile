@@ -25,7 +25,7 @@ libvmemleak:
 	cd ..
 
 app_:
-	cd app && qmake && make && make clean && cd ..
+	cd app && qmake CONFIG+=debug && make && make clean && cd ..
 
 clean:
 	find -type d -name 'build-*'    -exec rm -r {} \;
