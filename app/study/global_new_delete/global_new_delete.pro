@@ -8,4 +8,4 @@ DESTDIR  = $${PWD}/../../../bin
 SOURCES += global_new_delete.cpp
 
 OTHER_FILES += \
-    readme.md
+	readme.md

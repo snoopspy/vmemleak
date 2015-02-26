@@ -8,4 +8,4 @@ DESTDIR  = $${PWD}/../../../bin
 SOURCES += sized_deallocation.cpp
 
 OTHER_FILES += \
-    readme.md
+	readme.md

@@ -8,4 +8,4 @@ DESTDIR  = $${PWD}/../../../bin
 SOURCES += placement_delete.cpp
 
 OTHER_FILES += \
-    readme.md
+	readme.md
