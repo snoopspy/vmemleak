@@ -1,6 +1,11 @@
 CONFIG += VMEMLEAK_BUILD
 include(vmemleak.pri)
 
+TARGET = $${VMEMLEAK_NAME}
+TEMPLATE = lib
+CONFIG += staticlib
+DESTDIR = $${PWD}/lib
+
 SOURCES += \
 	$${PWD}/src/memleak/vmemleakfunc.cpp \
 	$${PWD}/src/memleak/vmemleakmgr.cpp

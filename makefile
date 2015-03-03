@@ -1,3 +1,11 @@
+define makelib # $(1)filename, $(2)config
+	cd lib && \
+	qmake $(1) CONFIG+=$(2) && \
+	make && \
+	make clean && \
+	cd ..
+endef
+
 all:
 	make debug
 	make release
@@ -11,18 +19,10 @@ debug: libvmemleak_d
 release: libvmemleak
 
 libvmemleak_d:
-	cd lib && \
-	qmake libvmemleak.pro CONFIG+=debug && \
-	make && \
-	make clean && \
-	cd ..
+	$(call makelib,libvmemleak.pro,debug)
 
 libvmemleak:
-	cd lib && \
-	qmake libvmemleak.pro && \
-	make && \
-	make clean && \
-	cd ..
+	$(call makelib,libvmemleak.pro,release)
 
 app_:
 	cd app && qmake CONFIG+=debug && make && make clean && cd ..
