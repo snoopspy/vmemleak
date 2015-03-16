@@ -6,10 +6,9 @@ define makelib # $(1)filename, $(2)config
 	cd ..
 endef
 
-all:
-	make debug
-	make release
-	make app_
+first: all
+
+all: debug release app_
 
 update:
 	git pull
@@ -28,7 +27,7 @@ app_:
 	cd app && qmake CONFIG+=debug && make && make clean && cd ..
 
 clean:
-	find -type d -name 'build-*'    -exec rm -r {} \;
+	find -type d -name 'build-*'    -exec rm -r {} \; | true
 	find -type f -name '*.o'        -delete
 	find -type f -name '*.pro.user' -delete
 	find -type f -name 'Makefile*'  -delete
