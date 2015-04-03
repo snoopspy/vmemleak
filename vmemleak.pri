@@ -16,9 +16,9 @@ CONFIG(debug, debug|release) VMEMLEAK_NAME = $${VMEMLEAK_NAME}_d
 #------------------------------------------------------------------------------
 # vmemleak
 #------------------------------------------------------------------------------
-VMEMLEAK_PATH  = $${PWD}
-INCLUDEPATH += $${VMEMLEAK_PATH}/src
+VMEMLEAK_DIR = $${PWD}
+INCLUDEPATH += $${VMEMLEAK_DIR}/src
 !CONFIG(VMEMLEAK_BUILD) {
-	PRE_TARGETDEPS +=  $${VMEMLEAK_PATH}/lib/lib$${VMEMLEAK_NAME}.a
-	LIBS           += -L$${VMEMLEAK_PATH}/lib -l$${VMEMLEAK_NAME}
+	PRE_TARGETDEPS +=  $${VMEMLEAK_DIR}/lib/lib$${VMEMLEAK_NAME}.a
+	LIBS           += -L$${VMEMLEAK_DIR}/lib -l$${VMEMLEAK_NAME}
 }
